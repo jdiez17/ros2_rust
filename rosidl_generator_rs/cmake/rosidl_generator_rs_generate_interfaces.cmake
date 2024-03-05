@@ -15,13 +15,13 @@
 find_package(rmw_implementation_cmake REQUIRED)
 find_package(rmw REQUIRED)
 
-if(NOT WIN32)
-  if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-undefined")
-  elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-undefined,error")
-  endif()
-endif()
+#if(NOT WIN32)
+#  if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+#    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-undefined")
+#  elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+#    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-undefined,error")
+#  endif()
+#endif()
 
 # Get a list of typesupport implementations from valid rmw implementations.
 rosidl_generator_rs_get_typesupports(_typesupport_impls)
