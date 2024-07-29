@@ -118,6 +118,14 @@ fn main() {
     println!("cargo:rustc-link-lib=dylib=rmw");
     println!("cargo:rustc-link-lib=dylib=rmw_implementation");
 
+    // needed to build successfully on ros2 humble - yocto scarthgap
+    println!("cargo:rustc-link-lib=dylib=rosidl_typesupport_c");
+    println!("cargo:rustc-link-lib=dylib=rcl_logging_spdlog");
+    println!("cargo:rustc-link-lib=dylib=tracetools");
+    println!("cargo:rustc-link-lib=dylib=ament_index_cpp");
+    println!("cargo:rustc-link-lib=dylib=rcpputils");
+    println!("cargo:rustc-link-lib=dylib=rcl_logging_interface");
+
     let bindings = builder.generate().expect("Unable to generate bindings");
 
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
